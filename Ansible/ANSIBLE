@@ -1,0 +1,103 @@
+## What is Ansible, and how does it work
+Ansible is an open-source IT automation tool that automates cloud provisioning, configuration management, application deployment, and orchestration. It uses a simple language (YAML) called playbooks to describe automation tasks. Ansible connects to nodes (servers, devices) via SSH (or WinRM for Windows) to push configuration changes or execute commands.
+
+## key components of Ansible?
+--Inventory:
+           A file listing all the hosts or nodes that Ansible manages.
+--Playbooks:
+           YAML files containing a series of tasks to be executed on the managed nodes.
+--Modules: 
+         Reusable scripts that perform specific tasks (e.g., managing packages, services, or files).
+--Roles: 
+         A way to organize playbooks, tasks, variables, files, and templates into reusable components.
+--Plugins:
+         Extend Ansible’s core functionalities, including connections, lookups, and callbacks.
+
+## What are Ansible Playbooks
+   Playbooks are YAML files that define the automation tasks to be performed on managed hosts. They allow you to orchestrate multiple tasks in a structured way.
+
+## What is an Ansible Inventory file
+   An inventory file is a list of hosts or groups of hosts where Ansible applies playbooks. It can be a static file (INI or YAML format) or dynamically generated.
+
+## How does Ansible differ from other configuration management tools like Puppet or Chef?
+ Ansible is agentless, meaning it doesn’t require any software to be installed on the managed nodes, unlike Puppet or Chef. It’s also simpler to set up, with playbooks written in YAML, and has a push-based model where the control node initiates communication.
+
+ ## What is the purpose of Ansible roles, and how are they structured?
+
+ Roles in Ansible provide a structured way to group tasks, variables, files, and templates for reuse. A role typically has a predefined directory structure (tasks, vars, files, templates, handlers, etc.), making it easier to share and reuse configurations across different playbooks.
+
+
+## xplain the Ansible Galaxy.
+
+Ansible Galaxy is a repository for sharing Ansible roles. Users can download and share roles from the Galaxy website, which helps in speeding up the deployment of common tasks.
+
+## What are Ansible facts? How are they used?
+
+ Facts are variables containing information about the managed hosts, gathered by Ansible at runtime. They can include details like IP addresses, OS versions, and hardware specifications. Facts are useful for making decisions in playbooks based on the environment.
+
+## How do you handle errors in Ansible playbooks?
+
+ You can handle errors in Ansible playbooks using:
+ignore_errors: Allows playbook execution to continue even if a task fails.
+failed_when: Defines custom failure conditions.
+rescue and always: Blocks within a play that
+
+## List Ansible’s advantages
+Ansible has many strengths, including:
+
+It’s agentless and only requires SSH service running on the target machines
+Python is the only required dependency and, fortunately, most systems come with the language pre-installed
+It requires minimal resources, so there’s low overhead
+It’s easy to learn and understand since Ansible tasks are written in YAML.
+Unlike other tools, most of which are Procedural, ansible is declarative; define the desired state, and Ansible fulfills the requirements needed to achieve it
+
+## What are CD and CI, and what is Ansible’s relationship with them?
+CD stands for continuous delivery, and CI stands for continuous integration; both are software development practices. 
+
+In CD, developers build software that can be released into production at any given time. CI, on the other hand, consists of each developer uploading regularly scheduled integrations (usually daily), resulting in multiple integrations every day. Ansible is an ideal tool for CI/CD processes, providing a stable infrastructure for provisioning the target environment and then deploying the application to it.
+
+## Describe how Ansible works.
+This is one of the most frequently asked ansible interview questions where the interviewer wants to know whether you actually know the tool in and out or not. You can start this way - ansible is broken down into two types of servers: controlling machines and nodes. Ansible is installed on the controlling computer, and the controlling machines manage the nodes via SSH. 
+
+The controlling machine contains an inventory file that holds the node system’s location. Ansible runs the playbook on the controlling machine to deploy the modules on the node systems. Since Ansible is agentless, there’s no need for a third-party tool to connect the nodes.
+
+## State the requirements for the Ansible server.
+You need a virtual machine with Linux installed on it, running with Python version 2.6 or higher.
+
+##  Explain what a “playbook” is.
+A playbook has a series of YAML-based files that send commands to remote computers via scripts. Developers can configure entire complex environments by passing a script to the required systems rather than using individual commands to configure computers from the command line remotely. Playbooks are one of Ansible’s strongest selling points and often referred to as the tool’s building blocks.
+
+## What is Ansible Tower?
+It’s an enterprise-level web-based solution that increases Ansible’s accessibility to other IT teams by including an easy-to-use UI (user interface). Tower’s primary function is to serve as the hub for all of an organization’s automation tasks, allowing users to monitor configurations and conduct rapid deployments.
+
+## What is “idempotency”?
+idempotency is an important Ansible feature. It prevents unnecessary changes in the managed hosts. With idempotency, you can execute one or more tasks on a server as many times as you need to, but it won’t change anything that’s already been modified and is working correctly. To put it in basic terms, the only changes added are the ones needed and not already in place.
+
+## What is Ansible Galaxy?
+This is a tool bundled with Ansible to create a base directory structure. Galaxy is a website that lets users find and share Ansible content. You can use this command to download roles from the website:
+
+$ ansible-galaxy install username.role_name
+
+## How do you use Ansible to create encrypted files?
+To create an encrypted file, use the ‘ansible-vault create’ command.
+
+$ ansible-vault create filename.yaml
+
+You will get a prompt to create a password, and then to type it again for confirmation. You will now have access to a new file, where you can add and edit data.
+
+##  What are “facts” in the context of Ansible?
+Facts are newly discovered and known system variables, found in the playbooks, used mostly for implementing conditionals executions. Additionally, they gather ad-hoc system information.
+
+You can get all the facts by using this command:
+
+$ ansible all- m setup
+
+## Explain what an ask_pass module is.
+It’s a playbook control module used to control a password prompt. It’s set to True by default.
+## What’s an ad hoc command?
+Users initiate ad hoc commands to initiate actions on a host without using a playbook. Consider it a one-shot command.
+
+## Explain the difference between a playbook and a play.
+A play is a set of tasks that run on one or more managed hosts. Plays consist of one or more tasks. A playbook consists of one or more plays.
+
+
